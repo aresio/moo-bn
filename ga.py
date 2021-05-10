@@ -15,7 +15,6 @@ def pairwise(iterable):
     "s -> (s0,s1), (s1,s2), (s2, s3), ..."
     a, b = tee(iterable)
     next(b, None)
-    # return izip(a, b)
     return zip(a, b)
 
 
@@ -32,19 +31,12 @@ class myThread(threading.Thread):
 		if os.name == 'posix':
 			simpath = "Rscript"
 		else:
-			simpath = "D:\\Program Files\\R\\R-4.0.2\\bin\\x64\\Rscript.exe"
-
-		#self.result = float(check_output([simpath, "MAIN_return_the_score.R", self.params['path'], self.params['dataset']]))
+			simpath = "D:\\Program Files\\R\\R-4.0.2\\bin\\x64\\Rscript.exe" # to be changed
 
 		command = [simpath, self.params['script'], self.params['path'], self.params['dataset']]
-
-		# print (" * Launching with", " ".join(command))
-		#exit()
-
 		res = check_output(command)
 		res = list(map(float, res.split()))
 		self.result = res
-		# print " * Thread", self.threadID, " completed, fitness:", self.result
 
 class GA(object):
 
@@ -277,10 +269,7 @@ def print_help():
 
 if __name__ == '__main__':
 
-	import os; os.chdir("experiments_nobile/experiments_nobile")
-
 	DATASET = 1
-	# savetxt("curr_dataset.txt", [DATASET], fmt="%d")
 	USE_PRIOR = False
 	MUTATION_RATE = 0.01
 	INDIVIDUALS = 32

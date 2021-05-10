@@ -1,10 +1,8 @@
 import numpy
-#import sa
 import networkx as nx
 try:
 	import matplotlib.pyplot as plt
 except:
-	#print "MATPLOTLIB not available"
 	pass
 
 class BN(object):
@@ -26,13 +24,6 @@ class BN(object):
 		return cycles>0
 
 	def pick_random_arc(self):
-		"""
-		list_arcs=[]
-		for r in xrange(self.nodes):
-			for c in xrange(self.nodes):
-				if self.is_connected(r,c):
-					list_arcs.append((r,c))
-		"""
 		import random
 		ret =  random.sample(self.nxrep.edges(),1)
 		return ret[0]
@@ -123,11 +114,5 @@ class BNloader(BN):
 
 if __name__ == '__main__':
 
-	pass
 	b = BN(3)
-	# b.plot("prova.png")
-	# b.show_matrix()
-	# b.import_prior("priori")
-	# b.export_file("prova")
-
-	# b.put_arc(from=0, to=0, assuming=
+	
